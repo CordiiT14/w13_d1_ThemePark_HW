@@ -1,7 +1,11 @@
 package people;
 
+import attractions.RollerCoaster;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
+import stalls.IceCreamStall;
+import stalls.ParkingSpot;
 
 import static org.junit.Assert.assertEquals;
 
@@ -27,5 +31,19 @@ public class VisitorTest {
     @Test
     public void hasMoney() {
         assertEquals(40.0, visitor.getMoney(), 0.1);
+    }
+
+    @Test
+    public void hasEmptyVisitedAttractionArray(){
+        assertEquals(0 , visitor.getNumberOfVisitedAttractions());
+    }
+
+    @Test
+    public void canAddAttraction(){
+        RollerCoaster rollerCoaster = new RollerCoaster("Blue Ridge", 10);
+        IceCreamStall iceCreamStall = new IceCreamStall("Dream Cones", "Vanilla Ice", ParkingSpot.A4, 4);
+        visitor.addVisitedAttraction(rollerCoaster);
+        visitor.addVisitedAttraction(iceCreamStall);
+        assertEquals(2, visitor.getNumberOfVisitedAttractions());
     }
 }
