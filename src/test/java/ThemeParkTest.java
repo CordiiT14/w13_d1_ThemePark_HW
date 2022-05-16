@@ -8,6 +8,7 @@ import stalls.CandyflossStall;
 import stalls.ParkingSpot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -39,5 +40,14 @@ public class ThemeParkTest {
         jurassicPark.visit(visitor, rollerCoaster);
         assertEquals(1, rollerCoaster.getVisitCount());
         assertEquals(rollerCoaster, visitor.getVisitedAttractions().get(0));
+    }
+
+    @Test
+    public void canGetAllReviews(){
+        HashMap<String, Integer> parkAttractionReviews = new HashMap<>();
+        parkAttractionReviews.put("Bumper Cars", 5);
+        parkAttractionReviews.put("Blue Ridge", 10);
+        parkAttractionReviews.put("Candy Land", 5);
+        assertEquals(parkAttractionReviews, jurassicPark.getAllReviews());
     }
 }
